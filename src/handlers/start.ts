@@ -9,9 +9,10 @@ import { mainMenuKeyboard } from "../toolkit/index.js";
 // file to add a feature. Send ONE message — no placeholder line above the menu.
 const composer = new Composer<Ctx>();
 
-const WELCOME = "👋 Welcome! Tap a button below to get started.";
+const WELCOME = "ما موضوع المنشور العلمي الذي تريد؟\nاكتبه في سطر واحد، أو اختر «إنشاء منشور».";
 
 composer.command("start", async (ctx) => {
+  ctx.session.step = "awaiting_topic";
   await ctx.reply(WELCOME, { reply_markup: mainMenuKeyboard() });
 });
 
